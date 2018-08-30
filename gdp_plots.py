@@ -12,8 +12,18 @@ import glob
 #filename = "gapminder_gdp_oceania.csv"
 #filename = sys.argv[1] #first parameter after scriptname
 
+if len(sys.argv) == 1:
+	#no arguments supplied
+	print("arguments required")
+	print("Usage: gdp_plot.py <filenames>")
+	print("Options: -a: plot all data in the current dir.")
+	exit()
+
 if sys.argv[1] == '-a' :
 	file_list = glob.glob("*gdp*.csv")
+	if len(file_list) == 0:
+		print("No data files found *gdp*.csv in current dir.")
+		exit()
 else:
 	file_list = sys.argv[1:]
 
